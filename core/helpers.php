@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\Container;
+use App\Core\EventDispatcher;
 use Dotenv\Dotenv;
 
 function db(): PDO
@@ -316,4 +318,21 @@ if (! function_exists('csrf_field')) {
     function csrf_field(): string {
     return '<input type="hidden" name="_token" value="' . \App\Core\Session::token() . '">';
 }
+}
+
+if (!function_exists('event')) {
+    /**
+     * Fire an event
+     *
+     * @param string $eventName
+     * @param mixed $payload
+     */
+    function event(string $eventName, $payload = null)
+    {
+        // Resolve EventDispatcher from container
+        $container = new Container();
+        $dispatcher = $container->resolve(EventDispatcher::class);
+
+        $dispatcher->dispatch($eventName, $payload);
+    }
 }

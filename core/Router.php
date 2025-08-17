@@ -89,19 +89,19 @@ class Router
     }
 
     protected function applyMiddleware(array $middlewares, Request $request, Response $response, callable $handler, )
-{
-    $dispatcher = array_reduce(
-        array_reverse($middlewares),
-        function ($next, $middlewareClass) {
-            return function (Request $request, Response $response) use ($next, $middlewareClass) {
-                $middleware = new $middlewareClass();
-                return $middleware->handle($request, $response, $next);
-            };
-        },
-        $handler
-    );
+    {
+        $dispatcher = array_reduce(
+            array_reverse($middlewares),
+            function ($next, $middlewareClass) {
+                return function (Request $request, Response $response) use ($next, $middlewareClass) {
+                    $middleware = new $middlewareClass();
+                    return $middleware->handle($request, $response, $next);
+                };
+            },
+            $handler
+        );
 
-    return $dispatcher($request, $response);
-}
+        return $dispatcher($request, $response);
+    }
 
 }
