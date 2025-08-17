@@ -1,0 +1,86 @@
+[2025-08-12 13:20:12] [127.0.0.1] ERROR: * PHP Error: Trying to access array offset on value of type null in D:\Projects\framework\core\Router.php on line 57 
+[2025-08-12 13:20:42] [127.0.0.1] ERROR: * PHP Error: Trying to access array offset on value of type null in D:\Projects\framework\core\Router.php on line 57 
+[2025-08-12 13:27:12] [127.0.0.1] ERROR: * PHP Error: Trying to access array offset on value of type null in D:\Projects\framework\core\Router.php on line 56 
+[2025-08-12 14:44:44] [127.0.0.1] ERROR: * PHP Error: Trying to access array offset on value of type null in D:\Projects\framework\core\Router.php on line 56 
+[2025-08-12 14:45:48] [127.0.0.1] ERROR: * PHP Error: Trying to access array offset on value of type null in D:\Projects\framework\core\Router.php on line 56 
+[2025-08-12 14:55:56] [127.0.0.1] ERROR: * Fatal Error: Cannot make non static method App\Core\ORM::find() static in class App\Core\Model in D:\Projects\framework\core\Model.php on line 28 
+[2025-08-12 15:11:28] [127.0.0.1] ERROR: * Fatal Error: Type of User::$table must be string (as in class Database\ORM\Model) in D:\Projects\framework\app\models\User.php on line 6 
+[2025-08-12 15:12:56] [127.0.0.1] ERROR: * PHP Error: Attempt to read property "name" on string in D:\Projects\framework\app\views\home.view.php on line 4 
+[2025-08-12 15:12:56] [127.0.0.1] ERROR: * PHP Error: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\Projects\framework\app\views\home.view.php on line 4 
+[2025-08-12 15:12:56] [127.0.0.1] ERROR: * PHP Error: Attempt to read property "email" on string in D:\Projects\framework\app\views\home.view.php on line 4 
+[2025-08-12 15:12:56] [127.0.0.1] ERROR: * PHP Error: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\Projects\framework\app\views\home.view.php on line 4 
+[2025-08-12 15:12:56] [127.0.0.1] ERROR: * PHP Error: Attempt to read property "name" on string in D:\Projects\framework\app\views\home.view.php on line 4 
+[2025-08-12 15:12:56] [127.0.0.1] ERROR: * PHP Error: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\Projects\framework\app\views\home.view.php on line 4 
+[2025-08-12 15:12:56] [127.0.0.1] ERROR: * PHP Error: Attempt to read property "email" on string in D:\Projects\framework\app\views\home.view.php on line 4 
+[2025-08-12 15:12:56] [127.0.0.1] ERROR: * PHP Error: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in D:\Projects\framework\app\views\home.view.php on line 4 
+[2025-08-12 15:20:20] [127.0.0.1] ERROR: * Fatal Error: Type of User::$table must be string (as in class Database\ORM\Model) in D:\Projects\framework\app\models\User.php on line 6 
+[2025-08-12 15:31:02] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:31:02] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:31:02] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:31:02] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:31:02] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:31:02] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:36:34] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:36:34] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:36:34] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:36:34] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:36:34] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:36:34] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:37:18] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:37:18] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:37:18] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:37:18] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:37:18] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:37:18] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:44:29] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:44:29] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:44:29] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:44:29] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:44:29] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:44:29] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:45:35] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:45:35] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:45:35] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:45:35] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:45:35] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:45:35] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:45:35] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\Role::$id is deprecated in D:\Projects\framework\database\ORM\Model.php on line 96 
+[2025-08-12 15:45:35] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\Role::$name is deprecated in D:\Projects\framework\database\ORM\Model.php on line 96 
+[2025-08-12 15:45:35] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\Role::$created_on is deprecated in D:\Projects\framework\database\ORM\Model.php on line 96 
+[2025-08-12 15:45:35] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\Role::$created_by is deprecated in D:\Projects\framework\database\ORM\Model.php on line 96 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\Role::$id is deprecated in D:\Projects\framework\database\ORM\Model.php on line 96 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\Role::$name is deprecated in D:\Projects\framework\database\ORM\Model.php on line 96 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\Role::$created_on is deprecated in D:\Projects\framework\database\ORM\Model.php on line 96 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\Role::$created_by is deprecated in D:\Projects\framework\database\ORM\Model.php on line 96 
+[2025-08-12 15:46:28] [127.0.0.1] ERROR: * Fatal Error: Cannot redeclare static Database\ORM\Model::$table as non static App\Models\Permission::$table in D:\Projects\framework\app\models\Permission.php on line 7 
+[2025-08-12 15:56:48] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:56:48] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:56:48] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:56:48] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:56:48] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:56:48] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:57:54] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:57:54] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:57:54] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:57:54] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:57:54] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 15:57:54] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 16:00:07] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 16:00:07] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 16:00:07] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 16:00:07] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 16:00:07] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 16:00:07] [127.0.0.1] ERROR: * PHP Error: Creation of dynamic property App\Models\User::$status is deprecated in D:\Projects\framework\database\ORM\Model.php on line 32 
+[2025-08-12 16:30:41] [127.0.0.1] ERROR: * PHP Error: Undefined variable $method in D:\Projects\framework\public\index.php on line 48 
+[2025-08-12 16:30:41] [127.0.0.1] ERROR: * PHP Error: Undefined variable $uri in D:\Projects\framework\public\index.php on line 48 
+[2025-08-12 16:31:43] [127.0.0.1] ERROR: * Fatal Error: Property App\Core\MiddlewareDispatcher::$controller cannot have type callable in D:\Projects\framework\core\MiddlewareDispatcher.php on line 7 
+[2025-08-12 16:54:45] [127.0.0.1] ERROR: * PHP Error: Undefined property: App\Core\Router::$container in D:\Projects\framework\core\Router.php on line 57 
+[2025-08-12 17:41:51] [127.0.0.1] ERROR: * PHP Error: Trying to access array offset on value of type null in D:\Projects\framework\core\Router.php on line 57 
+[2025-08-12 17:45:05] [127.0.0.1] ERROR: * PHP Error: Trying to access array offset on value of type null in D:\Projects\framework\core\Router.php on line 57 
+[2025-08-13 10:35:09] [127.0.0.1] ERROR: * PHP Error: Trying to access array offset on value of type null in D:\Projects\framework\core\Router.php on line 57 

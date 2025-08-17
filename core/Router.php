@@ -1,0 +1,107 @@
+<?php
+
+namespace App\Core;
+
+use Closure;
+use Exception;
+
+class Router
+{
+    protected array $routes = [];
+    protected Container $container;
+
+    public function __construct(Container $container)
+    {
+        $this->container = $container;
+    }
+
+    public function get(string $uri, array $action, array $middleware = []): void
+    {
+        $this->addRoute('GET', $uri, $action, $middleware);
+    }
+
+    public function post(string $uri, array $action, array $middleware = []): void
+    {
+        $this->addRoute('POST', $uri, $action, $middleware);
+    }
+
+    public function put(string $uri, array $action, array $middleware = []): void
+    {
+        $this->addRoute('PUT', $uri, $action, $middleware);
+    }
+
+    public function delete(string $uri, array $action, array $middleware = []): void
+    {
+        $this->addRoute('DELETE', $uri, $action, $middleware);
+    }
+
+    protected function addRoute(string $method, string $uri, array $action, array $middleware = []): void
+    {
+        $this->routes[] = [
+            'method'     => $method,
+            'uri'        => $uri,
+            'action'     => $action,
+            'middleware' => $middleware,
+        ];
+    }
+
+    public function dispatch(Request $request, Response $response): Response
+    {
+        $method = $request->getMethod();
+        $uri    = $request->getUri();
+
+        // Find route
+        $route = null;
+        foreach ($this->routes as $r) {
+            if ($r['method'] === $method && $r['uri'] === $uri) {
+                $route = $r;
+                break;
+            }
+        }
+
+        if (!$route) {
+            // ❌ Short-circuit if no route matches
+            $response->setStatusCode(404);
+            $response->setHeader('Content-Type', 'application/json');
+            return response()->json(['success' => false, 'message' => 'Route not found'], 404);
+            return $response;
+        }
+
+        // Build final controller callable
+        $controllerHandler = function(Request $req, Response $res) use ($route) {
+            [$controllerClass, $action] = $route['action'];
+            $controller = $this->container->resolve($controllerClass);
+            $result = $controller->$action($req, $res, []);
+
+            if (is_string($result)) {
+                $res->setContent($result);
+                return $res;
+            }
+
+            if ($result instanceof Response) {
+                return $result;
+            }
+
+            throw new Exception("Controller must return string or Response instance");
+        };
+
+        return $this->applyMiddleware($route['middleware'], $request, $response, $controllerHandler);
+    }
+
+    protected function applyMiddleware(array $middlewares, Request $request, Response $response, callable $handler, )
+{
+    $dispatcher = array_reduce(
+        array_reverse($middlewares),
+        function ($next, $middlewareClass) {
+            return function (Request $request, Response $response) use ($next, $middlewareClass) {
+                $middleware = new $middlewareClass();
+                return $middleware->handle($request, $response, $next);
+            };
+        },
+        $handler
+    );
+
+    return $dispatcher($request, $response);
+}
+
+}

@@ -1,0 +1,39 @@
+{
+    "name": "senzdigitals/framework",
+    "description": "A custom PHP framework for personal projects",
+    "type": "project",
+    "require": {
+        "php": ">=8.2",
+        "vlucas/phpdotenv": "^5.6",
+        "monolog/monolog": "^3.9",
+        "firebase/php-jwt": "^6.11"
+    },
+    "authors": [
+        {
+            "name": "Douglas Senzu",
+            "email": "senzdigitals.inc23@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "App\\Core\\": "core/",
+            "Database\\":"database/"
+        },
+        "files": [
+            "core/helpers.php"
+        ]       
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "serve": "php -S localhost:8000 -t public"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
+
