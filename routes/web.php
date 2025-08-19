@@ -3,6 +3,7 @@
 use App\Controllers\Web\AdminController;
 use App\Controllers\Web\AuthController;
 use App\Controllers\HomeController;
+use App\Controllers\TestController;
 use App\Middleware\AuthMiddleware;
 
 /*
@@ -23,3 +24,6 @@ $router->get('/web/logout', [AuthController::class, 'logout']/* , [AuthMiddlewar
 
 $router->get('/web/admin', [AdminController::class, 'index'], [AuthMiddleware::class]);
 $router->get('/web/admin/users', [AdminController::class, 'users'], [AuthMiddleware::class]);
+
+//Testing routes
+$router->get('/web/test', [TestController::class, 'index']);

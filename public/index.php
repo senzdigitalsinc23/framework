@@ -10,6 +10,8 @@ use App\Core\Request;
 use App\Core\Response;
 use App\Core\Router;
 use App\Core\Storage;
+use Services\EmailService;
+use Services\SMSService;
 
 session_start();
 // Boot container
@@ -35,6 +37,17 @@ $container->singleton(Queue::class, function () {
     return new Queue(__DIR__ . '/../storage/jobs');
 });
 
+
+
+
+/* $container->singleton(EmailService::class, function () {
+    return new EmailService('noreply@myapp.com');
+});
+
+$container->singleton(SMSService::class, function () {
+    return new SMSService();
+}); */
+
 $container->singleton(EventDispatcher::class, function () {
     return new EventDispatcher();
 });
@@ -49,6 +62,8 @@ require __DIR__ . '/../routes/api.php';
 // Dispatch request
 $request = $container->resolve(Request::class);
 $response = $container->resolve(Response::class);
+
+/* $sms = $container->resolve(SMSService::class); */
 
 $response = $router->dispatch($request, $response);
 $response->send();
