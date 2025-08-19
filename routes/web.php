@@ -26,4 +26,6 @@ $router->get('/web/admin', [AdminController::class, 'index'], [AuthMiddleware::c
 $router->get('/web/admin/users', [AdminController::class, 'users'], [AuthMiddleware::class]);
 
 //Testing routes
-$router->get('/web/test', [TestController::class, 'index']);
+$router->get('/web/test/mail', [TestController::class, 'mail']);
+$router->get('/web/test/sms', [TestController::class, 'sms']);
+$router->get('/web/test/pdf', [TestController::class, 'pdfReport']);

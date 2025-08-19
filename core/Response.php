@@ -45,4 +45,28 @@ class Response
 
         echo $this->content;
     }
+
+    public static function download(string $filePath, ?string $fileName = null, string $contentType = 'application/octet-stream'): void
+    {
+        if (!file_exists($filePath)) {
+            http_response_code(404);
+            echo "File not found.";
+            return;
+        }
+
+        if ($fileName === null) {
+            $fileName = basename($filePath);
+        }
+
+        header('Content-Description: File Transfer');
+        header('Content-Type: ' . $contentType);
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
+        header('Content-Length: ' . filesize($filePath));
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Expires: 0');
+
+        readfile($filePath);
+        exit;
+    }
 }

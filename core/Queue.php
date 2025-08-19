@@ -1,32 +1,41 @@
 <?php
 namespace App\Core;
 
+use App\Core\Container;
+
 class Queue
 {
-    protected string $path;
+    protected string $queueFile;
 
-    public function __construct(string $path)
+    public function __construct(string $queueFile = __DIR__ . '/../storage/queue.json')
     {
-        $this->path = rtrim($path, '/');
-        if (!is_dir($this->path)) {
-            mkdir($this->path, 0777, true);
+        $this->queueFile = $queueFile;
+
+        if (!file_exists($this->queueFile)) {
+            file_put_contents($this->queueFile, json_encode([]));
         }
     }
 
-    public function push(Job $job): void
+    public function push(object $job): void
     {
-        $filename = $this->path . '/' . uniqid('job_', true) . '.job';
-        file_put_contents($filename, serialize($job));
+        $queue = json_decode(file_get_contents($this->queueFile), true);
+        $queue[] = base64_encode(serialize($job));
+        file_put_contents($this->queueFile, json_encode($queue));
     }
 
-    public function work(): void
+    public function process(): void
     {
-        foreach (glob($this->path . '/*.job') as $file) {
-            $job = unserialize(file_get_contents($file));
-            if ($job instanceof Job) {
+        $queue = json_decode(file_get_contents($this->queueFile), true);
+
+        while ($queue) {
+            $jobData = array_shift($queue);
+            $job = unserialize(base64_decode($jobData));
+
+            if (method_exists($job, 'handle')) {
                 $job->handle();
             }
-            unlink($file);
         }
+
+        file_put_contents($this->queueFile, json_encode($queue));
     }
 }

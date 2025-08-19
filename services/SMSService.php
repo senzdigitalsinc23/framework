@@ -13,11 +13,12 @@ class SMSService implements NotificationService
     public function __construct()
     {
         Config::load(dirname(__DIR__) . '/config');
+        //show(Config::get('sms.token'));
 
         // Get DB config from your config helper
-        $from = Config::get('sms.host');
-        $sid   = Config::get('sms.name');
-        $token = Config::get('db_user');
+        $from = Config::get('sms.from');
+        $sid   = Config::get('sms.id');
+        $token = Config::get('sms.token');
 
         $this->client = new Client($sid, $token);
         $this->from = $from;
@@ -30,9 +31,10 @@ class SMSService implements NotificationService
                 'from' => $this->from,
                 'body' => $message
             ]);
+
             return true;
         } catch (\Exception $e) {
-            error_log("SMS send failed: " . $e->getMessage());
+            echo ("SMS send failed: " . $e->getMessage());
             return false;
         }
     }
