@@ -10,8 +10,6 @@ use App\Core\Request;
 use App\Core\Response;
 use App\Core\Router;
 use App\Core\Storage;
-use Services\EmailService;
-use Services\SMSService;
 
 session_start();
 // Boot container

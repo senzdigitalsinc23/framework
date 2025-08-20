@@ -5,7 +5,7 @@ use Database\Migration;
 class CreateRolesPermissionsTables20250812120000 extends Migration {
     public function up():void
     {
-        $this->schema->create('roles', function ($table) {
+         /*$this->schema->create('roles', function ($table) {
             $table->id();
             $table->string('name')->unique();
             $table->text('description')->nullable();
@@ -27,16 +27,16 @@ class CreateRolesPermissionsTables20250812120000 extends Migration {
 
         $this->schema->table('users', function ($table) {
             $table->integer('role_id')->nullable();
-        });
+        });*/
     }
 
     public function down():void
     {
-        $this->schema->drop('role_permission');
+        /* $this->schema->drop('role_permission');
         $this->schema->drop('permissions');
         $this->schema->drop('roles');
         $this->schema->table('users', function ($table) {
             $table->dropColumn('role_id');
-        });
-    }
-};
+        }); */
+    } 
+}

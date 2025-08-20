@@ -225,4 +225,25 @@ abstract class Model
 
         return $rows;
     }
+
+     public function save(): bool
+    {
+        $db = Database::getInstance(); // assume you already have this
+        $pdo = $db->getConnection();
+
+        $columns = array_keys($this->attributes);
+        $placeholders = array_map(fn($c) => ":$c", $columns);
+
+        $sql = "INSERT INTO {$this->table} (" . implode(',', $columns) . ")
+                VALUES (" . implode(',', $placeholders) . ")";
+
+        $stmt = $pdo->prepare($sql);
+
+        foreach ($this->attributes as $key => $value) {
+            $stmt->bindValue(":$key", $value);
+        }
+
+        return $stmt->execute();
+    }
+
 }

@@ -29,3 +29,5 @@ $router->get('/web/admin/users', [AdminController::class, 'users'], [AuthMiddlew
 $router->get('/web/test/mail', [TestController::class, 'mail']);
 $router->get('/web/test/sms', [TestController::class, 'sms']);
 $router->get('/web/test/pdf', [TestController::class, 'pdfReport']);
+/* $router->get('/report/queue', [ReportController::class, 'queueReport']);
+$router->get('/report/download', [ReportController::class, 'downloadReport']); */
