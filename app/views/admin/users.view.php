@@ -109,7 +109,7 @@ document.getElementById("register").addEventListener("submit", function(e) {
         const form = e.target;
         const formData = new FormData(form);
 
-        fetch('/api/register', { 
+        fetch('/api/register?apiKey=devKey123', { 
             method  : 'POST',
             body    :   formData,
             credentials: 'same-origin'
@@ -171,7 +171,7 @@ function resetForm() {
 function loadUsers() {
     let tbody = document.getElementById('tbody');
     let tableForm = '';
-    fetch("/api/admin/users", {
+    fetch("/api/admin/users?apiKey=devKey123", {
         method: "get",
         credentials: 'same-origin'
     })
