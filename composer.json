@@ -27,7 +27,9 @@
             "App\\": "app/",
             "App\\Core\\": "core/",
             "Database\\":"database/",
-            "Services\\": "services/"
+            "Services\\": "services/",
+            "Support\\" : "support/",
+            "Repositories\\": "repositories/"
         },
         "files": [
             "core/helpers.php"

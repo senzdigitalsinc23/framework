@@ -4,6 +4,7 @@ use App\Controllers\Web\AdminController;
 use App\Controllers\Web\AuthController;
 use App\Controllers\HomeController;
 use App\Controllers\TestController;
+use App\Middleware\ApiKey;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\SecurityHeaders;
 
@@ -18,7 +19,7 @@ use App\Middleware\SecurityHeaders;
 
 /* $router->middleware([\App\Middleware\CsrfMiddleware::class]); */
 
-$router->get('/web', [HomeController::class, 'index']/* , [AuthMiddleware::class] */);
+$router->get('/web', [HomeController::class, 'index'], /* , [AuthMiddleware::class] */);
 $router->get('/about', [HomeController::class, 'about']);
 
 $router->get('/web/login', [AuthController::class, 'index']);

@@ -3,6 +3,7 @@
 use App\Controllers\Api\DocumentationController;
 use App\Controllers\Api\v1\AdminController;
 use App\Controllers\Api\v1\AuthController;
+use App\Middleware\ApiKeyMiddleware;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\ContentTypeEnforcer;
 use App\Middleware\CorsMiddleware;
@@ -21,15 +22,18 @@ use App\Middleware\SecurityHeaders;
 ]); */
 /* $router->middleware([\App\Middleware\CsrfMiddleware::class]); */
 
-$router->post('/api/register', [AuthController::class, 'register'], [AuthMiddleware::class]);
-$router->post('/api/login', [AuthController::class, 'login']);
-$router->get('/api/me', [AuthController::class, 'me'], [AuthMiddleware::class]);
+$router->post('/api/register', [AuthController::class, 'register'], [ApiKeyMiddleware::class, AuthMiddleware::class]);
+$router->post('/api/login', [AuthController::class, 'login'], [ApiKeyMiddleware::class]);
+$router->get('/api/me', [AuthController::class, 'me'], [ApiKeyMiddleware::class, AuthMiddleware::class]);
 $router->get('/api/logout', [AuthController::class, 'me'], [AuthMiddleware::class]);
-$router->get('/api/profile', [AuthController::class, 'profile'], [JWTMiddleware::class]);
+$router->get('/api/profile', [AuthController::class, 'profile'], [ApiKeyMiddleware::class, JWTMiddleware::class]);
 
-$router->get('/api/admin/users', [AdminController::class, 'users'], [AuthMiddleware::class]);
-
-
+$router->get('/api/admin/users', [AdminController::class, 'users'], [ApiKeyMiddleware::class, AuthMiddleware::class]);
+/* 
+$router->getApi('v1', '/students', [Api\V1\StudentController::class, 'index'], [
+    ApiKeyMiddleware::class,
+    KeyRateLimiterMiddleware::class
+]); */
 //Documentation endpoints
 /* $router->get('/api/swagger', [DocumentationController::class, 'index']);
 $router->get('/api/docs', function () {

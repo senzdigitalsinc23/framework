@@ -72,7 +72,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     const form = e.target;
     const formData = new FormData(form);
 
-    fetch("/api/login", {
+    fetch("/api/login?apiKey=devKey123", {
         method: "POST",
         body: formData
     })
