@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\Queue;
 use App\Core\Request;
 use App\Core\Response;
+use App\Models\Payment;
 use App\Models\User;
 use App\Services\Payments\MomoService;
 use Jobs\GenerateReportJob;
@@ -29,6 +30,52 @@ class TestController
         $this->momo = $momo;
         $this->transactions = $transactions;
     }
+
+    public function webhook(Request $request, Response $response)
+    {
+        $payload = $request()->json(); // assuming you added a json() method in Request class
+
+        // Example payload from MoMo
+        // {
+        //   "transactionId": "momo_64f9e56c...",
+        //   "status": "success",
+        //   "amount": "50",
+        //   "reference": "123456",
+        //   "reason": null
+        // }
+
+        $transactionId = $payload['transactionId'] ?? null;
+        $status = $payload['status'] ?? 'failed';
+        $reference = $payload['reference'] ?? null;
+        $reason = $payload['reason'] ?? null;
+
+        if (!$transactionId) {
+            return $response()->json([
+                'success' => false,
+                'message' => 'Invalid webhook payload'
+            ], 400);
+        }
+
+        $payment = Payment::where('transaction_id', $transactionId)->first();
+
+        if (!$payment) {
+            return $response()->json([
+                'success' => false,
+                'message' => 'Transaction not found'
+            ], 404);
+        }
+
+        $payment->status = $status;
+        $payment->reference = $reference;
+        $payment->reason = $reason;
+        $payment->save();
+
+        return $response()->json([
+            'success' => true,
+            'message' => "Payment status updated to {$status}"
+        ]);
+    }
+
 
     public function mail()
     {
