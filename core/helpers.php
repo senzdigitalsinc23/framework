@@ -38,6 +38,7 @@ function db(): PDO
 
 use App\Core\Request;
 use App\Core\Session;
+use App\Core\View;
 use App\Models\Permission;
 
 function request(): Request
@@ -335,4 +336,8 @@ if (!function_exists('event')) {
 
         $dispatcher->dispatch($eventName, $payload);
     }
+}
+
+function esc($string) {
+    return View::e($string);
 }

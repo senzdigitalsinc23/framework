@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Api;
+namespace App\Controllers\Api\v1;
 
 use App\Services\PaymentService;
 use App\Core\Request;

@@ -49,7 +49,7 @@
     <div class="btn btn-primary btn-sm mb-3 mt-5 float-end" id="add-user"><?=icon('person-fill-add')?></div>
     <table class="table table-bordered">
         <thead>
-            <tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr>
+            <tr><th>#</th><th>User ID</th><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr>
         </thead>
             
             <tbody class="tbody" id="tbody">
@@ -63,7 +63,6 @@
     </div>
 
 </div>
-<script src="users.js"></script>
 
 <?php remove('_old')?>
 
@@ -119,28 +118,28 @@ document.getElementById("register").addEventListener("submit", function(e) {
             //if (!response.ok) throw new Error('Network response was not ok: ' + response.status);
             return response.json();
         })
-        .then(data => {      
+        .then(data => {console.log(data);       
 
-        if (data.success) {
-            alertBox.classList.remove('alert-danger');
-            alertBox.classList.add('alert-success');
-            alertMessage.innerHTML = data.message
-            alertBox.hidden = false;
-            btnClose.hidden = false;
+            if (data.success) {
+                alertBox.classList.remove('alert-danger');
+                alertBox.classList.add('alert-success');
+                alertMessage.innerHTML = data.message
+                alertBox.hidden = false;
+                btnClose.hidden = false;
 
-            loadUsers();
-            resetForm();
-            
-        } else {           
-            
-            alertBox.classList.remove('alert-success');
-            alertBox.classList.add('alert-danger');
-            alertMessage.innerHTML = data.message
+                loadUsers();
+                resetForm();
+                
+            } else {           
+                
+                alertBox.classList.remove('alert-success');
+                alertBox.classList.add('alert-danger');
+                alertMessage.innerHTML = data.message
 
-            btnClose.hidden = false;
-            alertBox.hidden = false;            
+                btnClose.hidden = false;
+                alertBox.hidden = false;            
 
-        }
+            }
 
         /* setTimeout(() =>{
             btnClose.hidden = true;
@@ -178,11 +177,13 @@ function loadUsers() {
     })
     .then(res => res.json())
     .then(data => {
-        if (data.success) {console.log(data);
-        
+        numbering = 1;
+        if (data.success) {
+            
             users = data.users;
-            users.forEach(element => [
-                    tableForm += `<tr>
+            users.forEach((element) => {
+                tableForm += `<tr>
+                    <td>${numbering}</>
                     <td>${element.id}</td>
                     <td>${element.name}</td>
                     <td>${element.email}</td>
@@ -192,7 +193,10 @@ function loadUsers() {
                         <a href="/web/admin/users/${element['id']}/delete" class="btn btn-sm btn-danger"><img src="/../assets/images/bootstrap-icons/unlock-fill.svg" alt=""></a>
                     </td>
                     </tr>`
-                ])   
+
+                numbering++;
+            })
+                
         }
         tbody.innerHTML = tableForm;return;
     })

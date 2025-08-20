@@ -5,6 +5,7 @@ use App\Controllers\Web\AuthController;
 use App\Controllers\HomeController;
 use App\Controllers\TestController;
 use App\Middleware\AuthMiddleware;
+use App\Middleware\SecurityHeaders;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,13 @@ use App\Middleware\AuthMiddleware;
 |--------------------------------------------------------------------------
 */
 
+/* $router->middleware([\App\Middleware\CsrfMiddleware::class]); */
+
 $router->get('/web', [HomeController::class, 'index']/* , [AuthMiddleware::class] */);
 $router->get('/about', [HomeController::class, 'about']);
 
 $router->get('/web/login', [AuthController::class, 'index']);
-$router->get('/web/register', [AuthController::class, 'registerForm']/* , [AuthMiddleware::class] */);
+$router->get('/web/register', [AuthController::class, 'registerForm'], [AuthMiddleware::class, SecurityHeaders::class]);
 $router->get('/web/logout', [AuthController::class, 'logout']/* , [AuthMiddleware::class] */);
 
 $router->get('/web/admin', [AdminController::class, 'index'], [AuthMiddleware::class]);

@@ -1,23 +1,23 @@
 <?php
+
 namespace App\Middleware;
 
-use App\Core\MiddlewareInterface;
-use App\Core\Request;
-use App\Core\Response;
-use App\Core\Session;
-
-class CSRFMiddleware implements MiddlewareInterface
+class CsrfMiddleware
 {
-    public function handle(Request $request, Response $response, callable $next): Response
+    public function handle(): void
     {
-        if (in_array($request->getMethod(), ['POST', 'PUT', 'DELETE'])) {
-            $token = $request->input('_token');
-            if (!$token || !Session::verifyToken($token)) {
-                return $response()->setStatusCode(419)
-                    ->setContent('CSRF token mismatch.');
+        // Only protect state-changing requests
+        $method = $_SERVER['REQUEST_METHOD'];
+        if (in_array($method, ['POST', 'PUT', 'PATCH', 'DELETE'])) {
+            $headers = getallheaders();
+            $token = $headers['X-CSRF-TOKEN'] ?? $_POST['_csrf'] ?? '';
+
+            if (!$token || $token !== ($_SESSION['csrf_token'] ?? '')) {
+                http_response_code(419); // 419 Authentication Timeout
+                header('Content-Type: application/json');
+                echo json_encode(['error' => 'CSRF token mismatch']);
+                exit;
             }
         }
-
-        return $next($request, $response);
     }
 }

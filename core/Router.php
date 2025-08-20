@@ -9,6 +9,7 @@ class Router
 {
     protected array $routes = [];
     protected Container $container;
+    protected array $globalMiddleware = [];
 
     public function __construct(Container $container)
     {
@@ -25,6 +26,21 @@ class Router
         $this->addRoute('POST', $uri, $action, $middleware);
     }
 
+    public function getApi(string $version, string $uri, array $action, array $middleware = []): void
+    {
+        $this->addRoute('GET', "/api/{$version}{$uri}", $action, $middleware);
+    }
+
+    public function postApi(string $version, string $uri, array $action, array $middleware = []): void
+    {
+        $this->addRoute('POST', "/api/{$version}{$uri}", $action, $middleware);
+    }
+
+    public function middleware(array $middleware): void
+    {
+        $this->globalMiddleware = array_merge($this->globalMiddleware, $middleware);
+    }
+
     public function put(string $uri, array $action, array $middleware = []): void
     {
         $this->addRoute('PUT', $uri, $action, $middleware);
@@ -35,13 +51,14 @@ class Router
         $this->addRoute('DELETE', $uri, $action, $middleware);
     }
 
-    protected function addRoute(string $method, string $uri, array $action, array $middleware = []): void
+    protected function addRoute(string $method, string $uri, array $action, array $middleware = [], array $docs = []): void
     {
         $this->routes[] = [
             'method'     => $method,
             'uri'        => $uri,
             'action'     => $action,
             'middleware' => $middleware,
+            'docs'       => $docs
         ];
     }
 

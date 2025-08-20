@@ -28,8 +28,14 @@ class Database
 
         $dsn = "$driver:host={$host};dbname={$db};charset={$charset}";
 
+        
+
         try {
-            $this->connection = new PDO($dsn, $user, $pass);
+            $this->connection = new PDO($dsn, $user, $pass, [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ]);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             $this->logger->error("Database connection failed: " . $e->getMessage());

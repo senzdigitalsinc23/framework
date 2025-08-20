@@ -3,6 +3,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use App\Core\Cache;
+use App\Core\Config;
 use App\Core\Container;
 use App\Core\EventDispatcher;
 use App\Core\Queue;
@@ -11,7 +12,62 @@ use App\Core\Response;
 use App\Core\Router;
 use App\Core\Storage;
 
-session_start();
+
+Config::load(dirname(__DIR__) . '/config');
+
+if (session_status() === PHP_SESSION_NONE) {
+    // Secure cookie & strict session settings
+    $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['SERVER_PORT'] ?? null) == 443;
+
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path'     => '/',
+        'domain'   => '',
+        'secure'   => $secure,
+        'httponly' => true,
+        'samesite' => 'Lax', // consider 'Strict' for non-3rd-party flows
+    ]);
+
+    ini_set('session.use_strict_mode', '1');
+    ini_set('session.cookie_httponly', '1');
+    ini_set('session.cookie_secure', $secure ? '1' : '0');
+    ini_set('session.use_only_cookies', '1');
+    session_name('app_session');
+
+    session_start();
+    // Rotate session ID after login or privilege changes
+    if (!isset($_SESSION['initiated'])) {
+        session_regenerate_id(true);
+        $_SESSION['initiated'] = true;
+    }
+}
+
+// public/index.php (top-level front controller)
+set_exception_handler(function (\Throwable $e) {
+    $isApi = str_starts_with($_SERVER['REQUEST_URI'] ?? '', '/api/');
+    $code  = ($e->getCode() >= 400 && $e->getCode() < 600) ? $e->getCode() : 500;
+
+    http_response_code($code);
+
+    //show(Config::get('app.debug'));
+
+    if (!empty(Config::get('app.debug')) && Config::get('app.debug') === 'true') {
+        if ($isApi) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => $e->getMessage(), 'trace' => $e->getTrace()]);
+        } else {
+            echo "<pre>" . htmlspecialchars((string)$e, ENT_QUOTES) . "</pre>";
+        }
+    } else {
+        if ($isApi) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 'Server error']);
+        } else {
+            echo "Something went wrong.";
+        }
+    }
+});
+
 // Boot container
 $container = new Container();
 

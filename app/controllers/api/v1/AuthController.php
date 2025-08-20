@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Api;
+namespace App\Controllers\Api\v1;
 
 use App\Core\Auth;
 use App\Core\MiddlewareInterface;
@@ -39,8 +39,9 @@ class AuthController
         $code  = '';
 
         $data = $request->getPost();
+        //echo json_encode(['success' => false, 'message' =>$data]);exit;
         //$data = $request->only(['name', 'email', 'password', 'role_id', 'status']);
-
+//echo json_encode(['success' => false, 'message' =>'']);exit;
         $validator = new Validator($data, [
             'name' => 'required|string|min:2',
             'email' => 'required|email|unique:users,email',
@@ -69,6 +70,9 @@ class AuthController
             $code = 201;
 
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+            
+            if(isset($data['role'])) { $data['role_id'] = $data['role'];unset($data['role']);}
+            if(isset($data['_token'])) {unset($data['_token']);}
 
             User::create($data);
         } 
