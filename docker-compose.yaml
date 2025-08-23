@@ -39,6 +39,9 @@ services:
       MAIL_FROM: senzdigitals.inc23@gmail.com
       MAIL_NAME: "Senz Digitals Inc"
       MAIL_PORT: 465
+      MAIL_ENCRYPTION: ssl
+      SMS_ID: ACf064e5046bd1be23e7b61d2331cadb72
+      TOKEN: 2ee9886ba3b09f145a6526e5806ffbc7
       SMS_FROM: +233240561313
       JWT_SECRET: your_super_secret_key
       MOMO_BASE_URL: https://sandbox.momodeveloper.mtn.com/collection/v1_0
