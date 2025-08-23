@@ -36,10 +36,10 @@ services:
   db:
     image: mysql:8.0
     environment:
-      MYSQL_DATABASE: basturms_db
-      MYSQL_USER: basturms
-      MYSQL_PASSWORD: tem22ple12345?
-      MYSQL_ROOT_PASSWORD: tem22ple12345?
+      MYSQL_DATABASE: 
+      MYSQL_USER: 
+      MYSQL_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: 
     ports:
       - "3307:3306"
     volumes:
