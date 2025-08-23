@@ -23,38 +23,7 @@ services:
       APP_URL: "http://localhost:8000"
       APP_ENV: production
       APP_DEBUG: true
-      RATE_LIMIT_MAX: 60
-      RATE_LIMIT_WINDOW: 60
-      CORS_ALLOWED_ORIGINS: "http://localhost:8000"
-
       
-      DB_HOST: 127.0.0.1
-      DB_NAME: basturms_db
-      DB_USER: root
-
-      DB_DRIVER: mysql
-      MAIL_HOST: smtp.gmail.com
-    
-    
-    
-      MAIL_NAME: "Senz Digitals Inc"
-      MAIL_PORT: 465
-  
-      MOMO_BASE_URL: https://sandbox.momodeveloper.mtn.com/collection/v1_0
-      MOMO_PRIMARY_KEY: your_api_key
-      MOMO_USER_ID: your_generated_user_id
-      MOMO_CALLBACK_URL: http://127.0.0.1/webhook/momo
-      MOMO_CURRENCY: GHS
-      HUBTEL_BASE_URL: 'https://payproxyapi.hubtel.com'
-      HUBTEL_CLIENT_ID: your_hubtel_client_id
-      HUBTEL_CLIENT_SECRET: your_hubtel_secret
-      HUBTEL_CALLBACK_URL: https://yourdomain.com/webhook/hubtel
-      PAYSTACK_BASE_URL: https://api.paystack.co
-      PAYSTACK_SECRET_KEY: your_paystack_key
-      PAYSTACK_CALLBACK_URL: https://yourdomain.com/webhook/paystack
-      API_RATE_MAX: 120
-      API_RATE_WINDOW: 60
-      TZ: UTC
     volumes:
       - ./:/var/www:cached
       - ./docker/php:/var/www/docker/php
