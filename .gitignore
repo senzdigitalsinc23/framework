@@ -1,6 +1,6 @@
 /vendor/
 /.env
-Dockerfile
-docker-compose.yaml
-docker-comp.yml
-Dockerfile.bak
+/Dockerfile
+/docker-compose.yaml
+/docker-comp.yml
+/Dockerfile.bak
