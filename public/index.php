@@ -47,7 +47,7 @@ set_exception_handler(function (\Throwable $e) {
     $isApi = str_starts_with($_SERVER['REQUEST_URI'] ?? '', '/api/');
     $code  = ($e->getCode() >= 400 && $e->getCode() < 600) ? $e->getCode() : 500;
 
-    http_response_code($code);
+    http_response_code((int) $code);
 
     //show(Config::get('app.debug'));
 

@@ -1,5 +1,6 @@
-
+<?php if(userCan('manage_students')) : ?>
 <h2 class="mt-4">Welcome Back, Admin</h2>
+<?php endif ?>
 <div class="row my-4 mt-3">
     <div class="col-md-4">
         <div class="card text-bg-primary">

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Core\Database;
+use App\Core\Session;
 use Database\ORM\Model;
 
 class User extends Model
@@ -14,6 +16,9 @@ class User extends Model
     public string $password;
     public ?string $created_at;
     public ?string $updated_at;
+    public string $status;
+    public ?string $is_super_admin;
+    public ?int $role_id;
 
     /**
      * Hide password when converting to array.
@@ -26,6 +31,9 @@ class User extends Model
             'email' => $this->email,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'is_super_admin' => $this->is_super_admin,
+            'role_id' => $this->role_id,
+            'status'   => $this->status
         ];
     }
 
@@ -37,6 +45,26 @@ class User extends Model
     public function role()
     {
         return $this->belongsTo(Role::class, 'id', 'id');
+    }
+
+     public static function hasPermission(string $permission): bool
+    {
+        $db = Database::getInstance()->getConnection();
+        $role = Session::get('user_role');
+
+        if (!$role) {
+            return false;
+        }
+
+        $stmt = $db->prepare("
+            SELECT p.name 
+            FROM permissions p
+            JOIN permission_role rp ON rp.permission_id = p.id
+            JOIN roles r ON r.id = rp.role_id
+            WHERE r.name = ? AND p.name = ?
+        ");
+        $stmt->execute([$role, $permission]);
+        return (bool) $stmt->fetch();
     }
 
     /* public function profile()

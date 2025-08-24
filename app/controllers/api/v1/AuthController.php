@@ -109,7 +109,11 @@ class AuthController
         $user = [
             'id' => $user->id, 
             'name' => $user->name,
-            'email' => $user->email
+            'email' => $user->email,
+            'is_super_admin' => $user->is_super_admin,
+            'role_id' => $user->role_id,
+            'status'   => $user->status
+            
         ];
         
         Session::set('user', $user);

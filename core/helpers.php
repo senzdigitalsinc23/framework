@@ -39,6 +39,7 @@ function db(): PDO
 use App\Core\Request;
 use App\Core\Session;
 use App\Core\View;
+use App\Helpers\Auth;
 use App\Models\Permission;
 
 function request(): Request
@@ -282,23 +283,15 @@ function image($name, $width = '', $height = '', $color = '') {
 }
 
 
-if (!function_exists('can')) {
-    function can(string $permissionName): bool
+if (!function_exists('userCan')) {
+    function userCan(string $permissionName): bool
     {
         $user = Session::get('user');
         if (!$user) {
             return false;
-        }
+        }        
 
-        // Cache permissions in session for faster lookup
-        if (!Session::has('user_permissions')) {
-            $permissionModel = new Permission();
-            $permissions = $permissionModel->getByRoleId($user['role_id']);
-            $permissionNames = array_column($permissions, 'name');
-            Session::put('user_permissions', $permissionNames);
-        }
-
-        return in_array($permissionName, Session::get('user_permissions'));
+        return Auth::userCan($permissionName);
     }
 }
 
