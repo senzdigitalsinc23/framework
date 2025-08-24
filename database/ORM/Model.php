@@ -24,9 +24,9 @@ abstract class Model
 
     public static function find(int $id): ?object
     {
-        $instance = new static();
-        $sql = "SELECT * FROM {$instance->table} WHERE id = :id LIMIT 1";
-        $stmt = $instance->db->prepare($sql);
+        $db = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM {$table} WHERE id = :id LIMIT 1";
+        $stmt = $db->prepare($sql);
         $stmt->execute(['id' => $id]);
         $result = $stmt->fetchObject(static::class);
         return $result ?: null;
@@ -34,9 +34,9 @@ abstract class Model
 
     public static function findByEmail(string $email): ?object
     {
-        $instance = new static();
-        $sql = "SELECT * FROM {$instance->table} WHERE email = :email LIMIT 1";
-        $stmt = $instance->db->prepare($sql);
+        $db = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM {$table} WHERE email = :email LIMIT 1";
+        $stmt = $db->prepare($sql);
         $stmt->execute(['email' => $email]);
         $result = $stmt->fetchObject(static::class);
         return $result ?: null;
@@ -44,9 +44,9 @@ abstract class Model
 
     public static function where(string $column, $value): ?object
     {
-        $instance = new static();
-        $sql = "SELECT * FROM {$instance->table} WHERE {$column} = :value LIMIT 1";
-        $stmt = $instance->db->prepare($sql);
+        $db = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM {$table} WHERE {$column} = :value LIMIT 1";
+        $stmt = $db->prepare($sql);
         $stmt->execute(['value' => $value]);
         $result = $stmt->fetchObject(static::class);
         return $result ?: null;
@@ -54,9 +54,9 @@ abstract class Model
 
     public static function all(): ?object
     {
-        $instance = new static();
-        $sql = "SELECT * FROM {$instance->table}";
-        $stmt = $instance->db->prepare($sql);
+        $db = Database::getInstance()->getConnection();
+        $sql = "SELECT * FROM {$table}";
+        $stmt = $db->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchObject(static::class);
         return $result ?: null;
@@ -65,15 +65,15 @@ abstract class Model
    
     public static function create(array $data): object
     {
-        $instance = new static();
+        $db = Database::getInstance()->getConnection();
         $columns = implode(',', array_keys($data));
         $placeholders = implode(',', array_map(fn($key) => ":$key", array_keys($data)));
 
-        $sql = "INSERT INTO {$instance->table} ({$columns}) VALUES ({$placeholders})";
-        $stmt = $instance->db->prepare($sql);
+        $sql = "INSERT INTO {$table} ({$columns}) VALUES ({$placeholders})";
+        $stmt = $db->prepare($sql);
         $stmt->execute($data);
 
-        $id = $instance->db->lastInsertId();
+        $id = $db->lastInsertId();
         return static::find((int) $id);
     }
 }*/
@@ -91,7 +91,6 @@ abstract class Model
 
     public function __construct(array $attributes = [])
     {
-        $this->db = Database::getInstance()->getConnection();
         $this->attributes = $attributes;
     }
 
@@ -115,12 +114,11 @@ abstract class Model
 
     public static function all()
     {
-        
         $table = static::$table;
-        $instance = new static();
+        $db = Database::getInstance()->getConnection();
 
         $sql = "SELECT * FROM {$table}";
-        $stmt = $instance->db->prepare($sql);
+        $stmt = $db->prepare($sql);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -131,10 +129,10 @@ abstract class Model
     public static function find(int $id): ?static
     {
         $table = static::$table;
-        $instance = new static();
+        $db = Database::getInstance()->getConnection();
 
         $sql = "SELECT * FROM {$table} WHERE id = ? LIMIT 1";
-        $stmt = $instance->db->prepare($sql);
+        $stmt = $db->prepare($sql);
         $stmt->execute(['id' => $id]);
         $rows = $stmt->fetchObject(static::class);
 
@@ -144,10 +142,10 @@ abstract class Model
     public static function where(string $column, $value)
     {        
         $table = static::$table;
-        $instance = new static();
+        $db = Database::getInstance()->getConnection();
 
         $sql = "SELECT * FROM {$table} WHERE {$column} = :value LIMIT 1";
-        $stmt = $instance->db->prepare($sql);
+        $stmt = $db->prepare($sql);
         $stmt->execute(['value' => $value]);
         $rows = $stmt->fetchObject(static::class);
 
@@ -157,7 +155,7 @@ abstract class Model
     public static function create(array $data)
     {
         $table = static::$table;
-        $instance = new static();
+        $db = Database::getInstance()->getConnection();
 
         $columns = implode(",", array_keys($data));
 
@@ -168,10 +166,10 @@ abstract class Model
         $sql = "INSERT INTO {$table} ({$columns}) VALUES ({$placeholders})";
 
         //echo json_encode($placeholders);exit;
-        $stmt = $instance->db->prepare($sql);
+        $stmt = $db->prepare($sql);
         $stmt->execute($data);
 
-        $id = $instance->db->lastInsertId();
+        $id = $db->lastInsertId();
         $data['id'] = $id;
 
         //return new static($data);

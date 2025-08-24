@@ -8,9 +8,8 @@ class ReportFactory {
     public static function create(string $type): ReportInterface {
         return match (strtolower($type)) {
             'pdf'   => new PdfReport(),
-            'word'  => new WordReport(),
             'excel' => new ExcelReport(),
-            default => throw new \InvalidArgumentException("Unsupported report type: $type")
+            default => response()->json(['success' => false, 'message' => 'Usupported file type'], 201)
         };
     }
 }

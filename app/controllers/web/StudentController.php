@@ -4,19 +4,27 @@ namespace App\Controllers\Web;
 
 use App\Core\Request;
 use App\Core\Response;
+use App\Core\View;
 use App\Models\Student;
 use App\Requests\StudentRequest;
 
 class StudentController
 {
-    public function index()
-    {
-        exit;
-        $students = Student::all();
-        return Response::view('students/index', ['students' => $students]);
+    protected View $view;
+
+    public function __construct(View $view) {
+        $this->view = $view;
+        $this->view->layout('layouts.main');
     }
 
-    public function create()
+    public function index()
+    {
+        //Auth::requirePermission('view_students');
+        //$students = Student::all();
+        return $this->view->render('students/index', ['students' => []]);
+    }
+
+    /* public function create()
     {
         return Response::view('students/create');
     }
@@ -70,5 +78,5 @@ class StudentController
             $student->delete();
         }
         return header('Location: /students');
-    }
+    } */
 }

@@ -1,10 +1,12 @@
 <?php
 
+use App\Controllers\Web\StudentController;
 use App\Controllers\Web\AdminController;
 use App\Controllers\Web\AuthController;
 use App\Controllers\HomeController;
 use App\Controllers\TestController;
 use App\Middleware\ApiKey;
+use App\Middleware\APIKeyMiddleware;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\SecurityHeaders;
 
@@ -27,7 +29,9 @@ $router->get('/web/register', [AuthController::class, 'registerForm'], [AuthMidd
 $router->get('/web/logout', [AuthController::class, 'logout']/* , [AuthMiddleware::class] */);
 
 $router->get('/web/admin', [AdminController::class, 'index'], [AuthMiddleware::class]);
-$router->get('/web/admin/users', [AdminController::class, 'users'], [AuthMiddleware::class]);
+$router->get('/web/users', [AdminController::class, 'users'], [AuthMiddleware::class]);
+
+$router->get('/web/students', [StudentController::class, 'index'], [/* APIKeyMiddleware::class,  */AuthMiddleware::class]);
 
 //Testing routes
 $router->get('/web/test/mail', [TestController::class, 'mail']);

@@ -27,11 +27,11 @@
                         <?=icon('people-fill') ?> Students
                     </button>
                 </h2>
-                <div id="studentsMenu" class="accordion-collapse collapse <?= isMenuActive('/web/admin/students') ?> text-white" data-bs-parent="#sidebarMenu">
+                <div id="studentsMenu" class="accordion-collapse collapse <?= isMenuActive('/web/students') ?> text-white" data-bs-parent="#sidebarMenu">
                     <div class="accordion-body p-0">
-                        <a href="/web/admin/students" class="nav-link ps-4 <?= isLinkActive('/web/admin/students') ?>"> <?=icon('person-fill-gear')?> Manage Students</a>
-                        <a href="/web/admin/students/import" class="nav-link ps-4 <?= isLinkActive('/web/admin/students/import') ?>"><?=icon('cloud-arrow-down-fill')?> Import</a>
-                        <a href="/web/admin/students/export" class="nav-link ps-4 <?= isLinkActive('/web/admin/students/export') ?>"><?=icon('cloud-arrow-up-fill')?> Export</a>
+                        <a href="/web/students" class="nav-link ps-4 <?= isLinkActive('/web/students') ?>"> <?=icon('person-fill-gear')?> Manage Students</a>
+                        <a href="/web/students/import" class="nav-link ps-4 <?= isLinkActive('/web/students/import') ?>"><?=icon('cloud-arrow-down-fill')?> Import</a>
+                        <a href="/web/students/export" class="nav-link ps-4 <?= isLinkActive('/web/students/export') ?>"><?=icon('cloud-arrow-up-fill')?> Export</a>
                     </div>
                 </div>
             </div>
@@ -43,11 +43,11 @@
                         <?=icon('person-badge-fill') ?> Staff
                     </button>
                 </h2>
-                <div id="staffMenu" class="accordion-collapse collapse <?= isMenuActive('/web/admin/staff') ?> text-white" data-bs-parent="#sidebarMenu">
+                <div id="staffMenu" class="accordion-collapse collapse <?= isMenuActive('/web/staff') ?> text-white" data-bs-parent="#sidebarMenu">
                     <div class="accordion-body p-0">
-                        <a href="/web/admin/staff" class="nav-link ps-4 <?= isLinkActive('/web/admin/staff') ?>">Manage Staff</a>
-                        <a href="/web/admin/staff/import" class="nav-link ps-4 <?= isLinkActive('/web/admin/staff/import') ?>">Import</a>
-                        <a href="/web/admin/staff/export" class="nav-link ps-4 <?= isLinkActive('/web/admin/staff/export') ?>">Export</a>
+                        <a href="/web/staff" class="nav-link ps-4 <?= isLinkActive('/web/staff') ?>">Manage Staff</a>
+                        <a href="/web/staff/import" class="nav-link ps-4 <?= isLinkActive('/web/staff/import') ?>">Import</a>
+                        <a href="/web/staff/export" class="nav-link ps-4 <?= isLinkActive('/web/staff/export') ?>">Export</a>
                     </div>
                 </div>
             </div>
@@ -59,11 +59,11 @@
                         <?=icon('cash-coin') ?> Finance
                     </button>
                 </h2>
-                <div id="financeMenu" class="accordion-collapse collapse <?= isMenuActive('/web/admin/finance') ?> text-white" data-bs-parent="#sidebarMenu">
+                <div id="financeMenu" class="accordion-collapse collapse <?= isMenuActive('/web/finance') ?> text-white" data-bs-parent="#sidebarMenu">
                     <div class="accordion-body p-0">
-                        <a href="/web/admin/finance/fees" class="nav-link ps-4 <?= isLinkActive('/web/admin/finance/fees') ?>">Fees</a>
-                        <a href="/web/admin/finance/payments" class="nav-link ps-4 <?= isLinkActive('/web/admin/finance/payments') ?>">Payments</a>
-                        <a href="/web/admin/finance/reports" class="nav-link ps-4 <?= isLinkActive('/web/admin/finance/reports') ?>">Reports</a>
+                        <a href="/web/finance/fees" class="nav-link ps-4 <?= isLinkActive('/web/finance/fees') ?>">Fees</a>
+                        <a href="/web/finance/payments" class="nav-link ps-4 <?= isLinkActive('/web/finance/payments') ?>">Payments</a>
+                        <a href="/web/finance/reports" class="nav-link ps-4 <?= isLinkActive('/web/finance/reports') ?>">Reports</a>
                     </div>
                 </div>
             </div>
@@ -77,9 +77,9 @@
                 </h2>
                 <div id="authMenu" class="accordion-collapse collapse <?= isMenuActive('/web/admin') ?> text-white" data-bs-parent="#sidebarMenu">
                     <div class="accordion-body p-0">
-                        <a href="/web/admin/users" class="nav-link ps-4 <?= isLinkActive('/web/admin/users') ?>">Users</a>
-                        <a href="/web/admin/roles" class="nav-link ps-4 <?= isLinkActive('/web/admin/roles') ?>">Roles</a>
-                        <a href="/web/admin/permissions" class="nav-link ps-4 <?= isLinkActive('/web/admin/permissions') ?>">Permissions</a>
+                        <a href="/web/users" class="nav-link ps-4 <?= isLinkActive('/web/users') ?>">Users</a>
+                        <a href="/web/roles" class="nav-link ps-4 <?= isLinkActive('/web/roles') ?>">Roles</a>
+                        <a href="/web/permissions" class="nav-link ps-4 <?= isLinkActive('/web/permissions') ?>">Permissions</a>
                     </div>
                 </div>
             </div>
@@ -91,10 +91,10 @@
                         <?=icon('gear-fill') ?> Settings
                     </button>
                 </h2>
-                <div id="settingsMenu" class="accordion-collapse collapse <?= isMenuActive('/web/admin/settings') ?> text-white " data-bs-parent="#sidebarMenu">
+                <div id="settingsMenu" class="accordion-collapse collapse <?= isMenuActive('/web/settings') ?> text-white " data-bs-parent="#sidebarMenu">
                     <div class="accordion-body p-0">
-                        <a href="/web/admin/settings/general" class="nav-link ps-4 <?= isLinkActive('/web/admin/settings/general') ?>">General</a>
-                        <a href="/web/admin/settings/profile" class="nav-link ps-4 <?= isLinkActive('/web/admin/settings/profile') ?>">Profile</a>
+                        <a href="/web/settings/general" class="nav-link ps-4 <?= isLinkActive('/web/settings/general') ?>">General</a>
+                        <a href="/web/settings/profile" class="nav-link ps-4 <?= isLinkActive('/web/settings/profile') ?>">Profile</a>
                     </div>
                 </div>
             </div>

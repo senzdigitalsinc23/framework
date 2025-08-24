@@ -23,13 +23,49 @@ class MakeModel extends Command
         <?php
         namespace App\Models;
 
-        use App\Core\ORM;
+        use App\Core\Database;
+        use App\Core\Session;
+        use Database\ORM\Model;
 
-        class {$name} extends ORM
+        class Student extends Model
         {
-            protected static string \$table = '{$this->toSnakeCase($name)}s';
+
             
-            // Define your model properties and methods here
+            protected static string table = '$name's;
+
+            public int \$id;
+            public string \$name;
+            public string \$email;
+            public string \$password;
+            public ?string \$created_at;
+            public ?string \$updated_at;
+            public string \$status;
+            public ?string \$is_super_admin;
+            public ?int \$role_id;
+
+            protected \$db;
+
+            /**
+             * Hide password when converting to array.
+             */
+            public function toArray(): array
+            {
+                return [
+                    'id'    => \$this->id,
+                    'name'  => \$this->name,
+                    'email' => \$this->email,
+                    'created_at' => \$this->created_at,
+                    'updated_at' => \$this->updated_at,
+                    'is_super_admin' => \$this->is_super_admin,
+                    'role_id' => \$this->role_id,
+                    'status'   => \$this->status
+                ];
+            }
+
+            public function __construct() {
+                \$this->db = Database::getInstance()->getConnection();
+            }
+
         }
 
         PHP;

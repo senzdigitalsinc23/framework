@@ -3,14 +3,9 @@
 use App\Controllers\Api\DocumentationController;
 use App\Controllers\Api\v1\AdminController;
 use App\Controllers\Api\v1\AuthController;
+use App\Controllers\Api\v1\StudentController;
 use App\Middleware\ApiKeyMiddleware;
 use App\Middleware\AuthMiddleware;
-use App\Middleware\ContentTypeEnforcer;
-use App\Middleware\CorsMiddleware;
-use App\Middleware\CsrfMiddleware;
-use App\Middleware\JsonBodyParser;
-use App\Middleware\JWTMiddleware;
-use App\Middleware\SecurityHeaders;
 
 // Global
 /* $router->middleware([
@@ -29,6 +24,12 @@ $router->get('/api/logout', [AuthController::class, 'me'], [AuthMiddleware::clas
 $router->get('/api/profile', [AuthController::class, 'profile'], [ApiKeyMiddleware::class, JWTMiddleware::class]);
 
 $router->get('/api/admin/users', [AdminController::class, 'users'], [ApiKeyMiddleware::class, AuthMiddleware::class]);
+
+$router->get('/api/students', [StudentController::class, 'index'], [ApiKeyMiddleware::class, AuthMiddleware::class]);
+$router->get('/api/students/download', [StudentController::class, 'exportCSV'], [ApiKeyMiddleware::class, AuthMiddleware::class]);
+$router->post('/api/students/upload', [StudentController::class, 'importCSV'], [ApiKeyMiddleware::class, AuthMiddleware::class]);
+$router->post('/api/students/preview', [StudentController::class, 'previewCSV'], [ApiKeyMiddleware::class, AuthMiddleware::class]);
+
 /* 
 $router->getApi('v1', '/students', [Api\V1\StudentController::class, 'index'], [
     ApiKeyMiddleware::class,
